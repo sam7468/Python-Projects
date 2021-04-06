@@ -1,0 +1,24 @@
+<body style="background-color:DimGray">
+<hr>
+<h1 style="color:white">TO-DO</h1>
+
+
+<ul>
+    {% for item in items %}
+    <hr>
+    <li style="color:white"> {{item.data}} </li>
+
+    <form action="/deletetodo/{{item.id}}/" method="post">
+    {% csrf_token %}
+    <input style="color:black" type="submit" value="DELETE">
+    </form>
+
+    {%endfor%}
+</ul>
+
+<form action="/addtodo/" method="post">
+    {% csrf_token %}
+    <input type="text" name="data">
+    <input style="color:black" type="submit" value="ADD">
+</form>
+</body>
